@@ -1,0 +1,33 @@
+<mat-card>
+    <form (submit)="onSalvarRecomendacao(recomendacaoForm)" #recomendacaoForm="ngForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Digite a recomendação</mat-label>
+            <input 
+                matInput
+                type="text"
+                name="texto"
+                [ngModel]="recomendacao?.texto"
+                required
+                minlength="5"
+                #texto="ngModel" />
+
+            <button 
+                *ngIf="recomendacaoForm.value.texto"
+                matSuffix
+                (click)="texto.reset()"
+                mat-icon-button>
+                <mat-icon>close</mat-icon>
+            </button>
+
+            <mat-error>Pelo menos 5 caracteres</mat-error>
+        </mat-form-field>
+
+        <button 
+            mat-raised-button 
+            color="accent">
+            Salvar Recomendação
+        </button>
+    </form>
+
+    
+</mat-card>
